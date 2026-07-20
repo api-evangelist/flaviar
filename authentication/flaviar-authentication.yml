@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://flaviar.com/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  Customer-facing authentication on the Flaviar storefront is delegated to
+  Shopify's Customer Account authorization server (OAuth 2.0 + OpenID Connect,
+  issuer https://shopify.com/authentication/80863265050). Derived from the live
+  OIDC discovery and RFC 8414 authorization-server metadata documents.
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  pkce: [S256]
+  grant_types: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+  token_endpoint_auth: [client_secret_basic]
+  id_token_signing: [RS256]
+schemes:
+  - name: ShopifyCustomerAccount
+    type: openIdConnect
+    openIdConnectUrl: https://flaviar.com/.well-known/openid-configuration
+    issuer: https://shopify.com/authentication/80863265050
+    authorizationUrl: https://shopify.com/authentication/80863265050/oauth/authorize
+    tokenUrl: https://shopify.com/authentication/80863265050/oauth/token
+    endSessionUrl: https://shopify.com/authentication/80863265050/logout
+    jwksUri: https://shopify.com/authentication/80863265050/.well-known/jwks.json
+    scopes: [openid, email, 'customer-account-api:full', 'customer-account-mcp-api:full']
+    sources: [well-known/flaviar-openid-configuration.json, well-known/flaviar-oauth-authorization-server.json]
