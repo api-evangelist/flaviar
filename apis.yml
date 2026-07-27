@@ -1,8 +1,15 @@
 aid: flaviar
 name: Flaviar
-description: Flaviar is a company surfaced as a portfolio company of speedinvest, y-combinator and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Flaviar is an online spirits retailer and members club for whiskey, tequila,
+  rum, gin and other premium spirits, offering curated tasting boxes, full-size
+  bottles, and a subscription membership. Its direct-to-consumer storefront runs
+  on Shopify and exposes a modern agent-commerce surface: a Universal Commerce
+  Protocol (UCP) merchant profile and hosted MCP shopping endpoint, an llms.txt /
+  agents.md agent-instruction document, and Shopify Customer Account
+  authentication via OAuth 2.0 + OpenID Connect. This profile was added to the
+  API Evangelist network as a portfolio lead and enriched from Flaviar's live
+  public discovery documents.
 url: https://raw.githubusercontent.com/api-evangelist/flaviar/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,14 +18,108 @@ x-backed-by:
 - y-combinator
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://flaviar.com/cdn/shop/files/image_29.png?v=1694778656
 tags:
 - Company
-apis: []
+- Spirits
+- Whiskey
+- Ecommerce
+- Retail
+- Beverages
+- Subscription
+- Agent Commerce
+- Shopify
+apis:
+- name: Flaviar Agent Commerce (UCP + MCP)
+  description: >-
+    Flaviar's Shopify storefront exposes an agent-driven commerce surface built
+    on the Universal Commerce Protocol (ucp.dev): a discovery document at
+    /.well-known/ucp and a hosted MCP endpoint for catalog search, cart, and
+    buyer-approved checkout, alongside Shopify's Customer Account GraphQL and MCP
+    APIs behind OAuth 2.0 / OpenID Connect.
+  humanURL: https://flaviar.com/llms.txt
+  baseURL: https://flaviar.com
+  tags:
+  - Agent Commerce
+  - MCP
+  - Ecommerce
+  - Spirits
+  properties:
+  - url: https://flaviar.com/llms.txt
+    type: LLMsTxt
+  - url: llms/flaviar-llms.txt
+    type: LLMsTxt
+  - url: mcp/flaviar-mcp.yml
+    type: MCPServer
+  - url: well-known/flaviar-well-known.yml
+    type: WellKnown
+  - url: well-known/flaviar-ucp.json
+    type: APICatalog
+  - url: authentication/flaviar-authentication.yml
+    type: Authentication
+  - url: scopes/flaviar-scopes.yml
+    type: OAuthScopes
+  - url: conventions/flaviar-conventions.yml
+    type: Conventions
+  - url: conformance/flaviar-conformance.yml
+    type: Conformance
+common:
+- type: DomainSecurity
+  url: security/flaviar-domain-security.yml
+- url: https://flaviar.com
+  type: Website
+- url: https://flaviar.com/llms.txt
+  type: Documentation
+- url: https://flaviar.com/account/login
+  type: SignUp
+- url: https://flaviar.com/account/login
+  type: Login
+- url: https://flaviar.com/pages/flaviar-black-membership
+  type: Pricing
+- url: https://flaviar.com/policies/terms-of-service
+  type: TermsOfService
+- url: https://flaviar.com/policies/privacy-policy
+  type: PrivacyPolicy
+- url: https://flaviar.com/policies/refund-policy
+  type: RefundPolicy
+- url: https://flaviar.com/policies/shipping-policy
+  type: ShippingPolicy
+- url: mcp/flaviar-mcp.yml
+  type: MCPServer
+- url: llms/flaviar-llms.txt
+  type: LLMsTxt
+- url: well-known/flaviar-well-known.yml
+  type: WellKnown
+- url: authentication/flaviar-authentication.yml
+  type: Authentication
+- url: scopes/flaviar-scopes.yml
+  type: OAuthScopes
+- url: conventions/flaviar-conventions.yml
+  type: Conventions
+- url: conformance/flaviar-conformance.yml
+  type: Conformance
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

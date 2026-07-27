@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: https://flaviar.com/.well-known/
+notes: >-
+  Cross-cutting standards Flaviar's storefront conforms to, evidenced by live
+  discovery documents. This asserts protocol conformance only; it is not a
+  published compliance/certification program, so no Compliance pointer is emitted.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server (RFC 8414) advertises authorization_code + refresh_token flows
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200 with issuer/token/authorization endpoints
+  - id: oidc-discovery
+    conforms: true
+    evidence: /.well-known/openid-configuration returns a valid OpenID Provider metadata document
+  - id: pkce-rfc7636
+    conforms: true
+    evidence: code_challenge_methods_supported includes S256
+  - id: mcp
+    conforms: true
+    evidence: hosted MCP endpoint at /api/ucp/mcp and Shopify Customer Account MCP API
+  - id: ucp-universal-commerce-protocol
+    conforms: true
+    evidence: /.well-known/ucp advertises UCP versions 2026-04-08 and 2026-01-23 with shopping services and payment handlers
+  - id: rfc9457-problem-details
+    conforms: false

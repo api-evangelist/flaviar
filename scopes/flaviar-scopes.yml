@@ -1,0 +1,32 @@
+generated: '2026-07-19'
+method: searched
+source: https://flaviar.com/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  Scopes are advertised by Shopify's Customer Account authorization server
+  (issuer https://shopify.com/authentication/80863265050) for the Flaviar
+  storefront. This is a Shopify-managed OIDC authorization server, not a
+  Flaviar-owned scope registry.
+schemes:
+  - name: ShopifyCustomerAccount
+    type: oauth2
+    source: https://flaviar.com/.well-known/openid-configuration
+    issuer: https://shopify.com/authentication/80863265050
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://shopify.com/authentication/80863265050/oauth/authorize
+        tokenUrl: https://shopify.com/authentication/80863265050/oauth/token
+        pkce: S256
+scopes:
+  - scope: openid
+    description: OIDC authentication; issue an ID token for the customer.
+    flows: [authorizationCode]
+  - scope: email
+    description: Access the customer's email address claim.
+    flows: [authorizationCode]
+  - scope: customer-account-api:full
+    description: Full access to the Shopify Customer Account GraphQL API on behalf of the signed-in customer.
+    flows: [authorizationCode]
+  - scope: customer-account-mcp-api:full
+    description: Full access to the Shopify Customer Account MCP API on behalf of the signed-in customer.
+    flows: [authorizationCode]

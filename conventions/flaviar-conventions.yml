@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: searched
+source: https://flaviar.com/llms.txt
+notes: >-
+  Cross-cutting agent-commerce conventions for Flaviar's Shopify storefront,
+  captured from /llms.txt and /.well-known/ucp. No documented idempotency-key
+  contract, so no Idempotency pointer is emitted.
+authentication:
+  style: OAuth 2.0 + OpenID Connect (Shopify Customer Account) for buyer identity; anonymous read/search
+  ref: authentication/flaviar-authentication.yml
+agent_commerce:
+  protocol: Universal Commerce Protocol (ucp.dev)
+  mcp_endpoint: https://flaviar.com/api/ucp/mcp
+  discovery: https://flaviar.com/.well-known/ucp
+  flow: [search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]
+  buyer_approval_invariant: >-
+    Agents must not complete payment without explicit contemporaneous buyer
+    consent; complete_checkout requires buyer approval of payment.
+  context_params: [context.address_country, context.currency]
+rate_limiting:
+  signal: HTTP 429 on the MCP endpoint (per-IP)
+  guidance: back off on 429 responses
+read_only_browsing:
+  auth_required: false
+  endpoints:
+    - 'GET /collections/all'
+    - 'GET /products/{handle}'
+    - 'GET /products/{handle}.json'
+    - 'GET /collections/{handle}'
+    - 'GET /collections/{handle}/products.json'
+    - 'GET /search?q={query}&type=product'
+    - 'GET /sitemap.xml'
+versioning:
+  scheme: dated protocol versions
+  ucp_versions: ['2026-04-08', '2026-01-23']
+idempotency:
+  supported: false
+  note: no documented idempotency-key header/param

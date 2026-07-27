@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://flaviar.com/.well-known/
+host: https://flaviar.com
+notes: >-
+  Flaviar's storefront runs on Shopify and exposes an agent-commerce discovery
+  surface. The OIDC/OAuth discovery documents describe Shopify's Customer Account
+  API (issuer shopify.com/authentication/80863265050); the UCP document is the
+  Universal Commerce Protocol (ucp.dev) merchant profile advertising an MCP
+  shopping endpoint and payment handlers.
+documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: flaviar-openid-configuration.json
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: flaviar-oauth-authorization-server.json
+    standard: RFC 8414 OAuth 2.0 Authorization Server Metadata
+  - path: /.well-known/customer-account-api
+    status: 200
+    file: flaviar-customer-account-api.json
+    standard: Shopify Customer Account API (GraphQL + MCP endpoints)
+  - path: /.well-known/ucp
+    status: 200
+    file: flaviar-ucp.json
+    standard: Universal Commerce Protocol (ucp.dev) merchant profile
+  - path: /.well-known/assetlinks.json
+    status: 200
+    note: present but empty ([]) — not indexed as a file
+  - path: /.well-known/apple-developer-merchantid-domain-association
+    status: 200
+    note: Apple Pay domain-association token (opaque); not indexed
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
