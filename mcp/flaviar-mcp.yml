@@ -2,38 +2,46 @@ generated: '2026-07-19'
 method: searched
 status: published
 source: https://flaviar.com/llms.txt
-notes: >-
-  Flaviar advertises two published, hosted MCP surfaces via its Shopify storefront.
-  (1) A Universal Commerce Protocol (UCP) shopping MCP endpoint for agent-driven
-  buying, documented in /llms.txt and /.well-known/ucp. (2) Shopify's Customer
-  Account MCP API, advertised in /.well-known/customer-account-api and reachable
-  after Customer Account OAuth (scope customer-account-mcp-api:full). Tool names
-  below are the UCP shopping flow documented in /llms.txt; the live tools/list
-  requires an agent profile URI and was not enumerable anonymously.
+notes: Flaviar advertises two published, hosted MCP surfaces via its Shopify storefront. (1) A Universal
+  Commerce Protocol (UCP) shopping MCP endpoint for agent-driven buying, documented in /llms.txt and /.well-known/ucp.
+  (2) Shopify's Customer Account MCP API, advertised in /.well-known/customer-account-api and reachable
+  after Customer Account OAuth (scope customer-account-mcp-api:full). Tool names below are the UCP shopping
+  flow documented in /llms.txt; the live tools/list requires an agent profile URI and was not enumerable
+  anonymously.
 servers:
-  - name: flaviar-ucp-shopping
-    protocol: Universal Commerce Protocol (ucp.dev)
-    transport: http
-    method: POST
-    url: https://flaviar.com/api/ucp/mcp
-    discovery: https://flaviar.com/.well-known/ucp
-    schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
-    supported_versions: ['2026-04-08', '2026-01-23']
-    auth: none for discovery/search; buyer approval required to complete checkout
-    tools:
-      - name: search_catalog
-        description: Find products matching the buyer's intent.
-      - name: create_cart
-        description: Create a cart and add desired items.
-      - name: create_checkout
-        description: Start the purchase flow for a cart.
-      - name: update_checkout
-        description: Set shipping address and method on a checkout.
-      - name: complete_checkout
-        description: Finalize the purchase (buyer must approve payment).
-  - name: shopify-customer-account-mcp
-    protocol: Shopify Customer Account API (MCP)
-    transport: http
-    url: https://shopify.com/80863265050/account/customer/api/mcp
-    discovery: https://flaviar.com/.well-known/customer-account-api
-    auth: OAuth2 (Shopify Customer Account), scope customer-account-mcp-api:full
+- name: flaviar-ucp-shopping
+  protocol: Universal Commerce Protocol (ucp.dev)
+  transport: http
+  method: POST
+  url: https://flaviar.com/api/ucp/mcp
+  discovery: https://flaviar.com/.well-known/ucp
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  supported_versions:
+  - '2026-04-08'
+  - '2026-01-23'
+  auth: none for discovery/search; buyer approval required to complete checkout
+  tools:
+  - name: search_catalog
+    description: Find products matching the buyer's intent.
+  - name: create_cart
+    description: Create a cart and add desired items.
+  - name: create_checkout
+    description: Start the purchase flow for a cart.
+  - name: update_checkout
+    description: Set shipping address and method on a checkout.
+  - name: complete_checkout
+    description: Finalize the purchase (buyer must approve payment).
+- name: shopify-customer-account-mcp
+  protocol: Shopify Customer Account API (MCP)
+  transport: http
+  url: https://shopify.com/80863265050/account/customer/api/mcp
+  discovery: https://flaviar.com/.well-known/customer-account-api
+  auth: OAuth2 (Shopify Customer Account), scope customer-account-mcp-api:full
+deployment:
+  mode: remote
+  endpoint: https://flaviar.com/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
