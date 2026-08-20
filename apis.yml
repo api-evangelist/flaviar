@@ -38,6 +38,16 @@ tags:
 - Company
 - Spirits
 - Whiskey
+- E-Commerce
+- Retail
+- Beverages
+- Subscription
+- Agent Commerce
+- Shopify
+tags_raw:
+- Company
+- Spirits
+- Whiskey
 - Ecommerce
 - Retail
 - Beverages
@@ -55,6 +65,11 @@ apis:
   humanURL: https://flaviar.com/llms.txt
   baseURL: https://flaviar.com
   tags:
+  - Agent Commerce
+  - MCP
+  - E-Commerce
+  - Spirits
+  tags_raw:
   - Agent Commerce
   - MCP
   - Ecommerce
