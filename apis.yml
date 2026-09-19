@@ -53,7 +53,7 @@ tags:
 - Retail
 - Beverages
 - Subscription
-- Agent Commerce
+- Agentic Commerce
 - Shopify
 tags_raw:
 - Company
@@ -76,7 +76,7 @@ apis:
   humanURL: https://flaviar.com/llms.txt
   baseURL: https://flaviar.com
   tags:
-  - Agent Commerce
+  - Agentic Commerce
   - MCP
   - E-Commerce
   - Spirits
