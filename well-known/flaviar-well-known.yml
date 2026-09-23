@@ -2,13 +2,13 @@ generated: '2026-07-19'
 method: searched
 source: https://flaviar.com/.well-known/
 host: https://flaviar.com
-notes: >-
-  Flaviar's storefront runs on Shopify and exposes an agent-commerce discovery
-  surface. The OIDC/OAuth discovery documents describe Shopify's Customer Account
-  API (issuer shopify.com/authentication/80863265050); the UCP document is the
-  Universal Commerce Protocol (ucp.dev) merchant profile advertising an MCP
-  shopping endpoint and payment handlers.
-documents:
+notes: Flaviar's storefront runs on Shopify and exposes an agent-commerce discovery surface. The OIDC/OAuth
+  discovery documents describe Shopify's Customer Account API (issuer shopify.com/authentication/80863265050);
+  the UCP document is the Universal Commerce Protocol (ucp.dev) merchant profile advertising an MCP shopping
+  endpoint and payment handlers.
+hosts:
+- host: https://flaviar.com
+  documents:
   - path: /.well-known/openid-configuration
     status: 200
     file: flaviar-openid-configuration.json
@@ -37,3 +37,8 @@ documents:
     status: 404
   - path: /.well-known/ai-plugin.json
     status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
