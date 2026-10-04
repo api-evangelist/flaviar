@@ -74,7 +74,6 @@ apis:
     buyer-approved checkout, alongside Shopify's Customer Account GraphQL and MCP
     APIs behind OAuth 2.0 / OpenID Connect.
   humanURL: https://flaviar.com/llms.txt
-  baseURL: https://flaviar.com
   tags:
   - Agentic Commerce
   - MCP
@@ -104,6 +103,9 @@ apis:
     type: Conventions
   - url: conformance/flaviar-conformance.yml
     type: Conformance
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 common:
 - type: DomainSecurity
   url: security/flaviar-domain-security.yml
