@@ -43,7 +43,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-10-06'
 image: https://flaviar.com/cdn/shop/files/image_29.png?v=1694778656
 tags:
 - Company
@@ -107,6 +107,10 @@ apis:
   x-platform: shopify
   x-platform-surface: ucp
 common:
+- url: https://flaviar.com/blogs/flaviar-times
+  type: Blog
+- url: https://flaviar.com/blogs/flaviar-times.atom
+  type: BlogRSS
 - type: DomainSecurity
   url: security/flaviar-domain-security.yml
 - url: https://flaviar.com
