@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/flaviar/integrations
+- https://n8n.io/integrations/flaviar/
+- https://composio.dev/toolkits/flaviar
+- https://monid.ai/tools/flaviar
+checked:
+- https://composio.dev/toolkits/flaviar
+- https://monid.ai/tools/flaviar
+- https://n8n.io/integrations/flaviar/
+- https://zapier.com/apps/flaviar/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
